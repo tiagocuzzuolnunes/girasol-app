@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tiago Tiradentes' Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/output.css">
+</head>
+
+<body class="h-screen bg-white">
+    <div class="h-8 font-sans text-xl w-full bg-hoverColor">v0.0.1</div>
+    <!-- HEADER -->
+    <div class="flex flex-row items-center w-screen pl-7 h-[80px] bg-purplePrimary">
+        <h1 class="font-fraunces font-ultraBlack text-5xl text-yellow">GS</h1>
+    </div>
+
+    <!-- WEEK CHANGE -->
+    <div class="flex flex-row justify-center items-center h-[70px]">
+        <!-- <button id="prevButton">
+            <i class="fas fa-chevron-left text-3xl"></i>
+        </button> -->
+        <button id="datePicker">
+            <p id="datePickerText" class="font-fraunces font-black text-2xl px-4">dia/mês - dia/mês </p>
+        </button>
+        <!-- <button id="nextButton">
+            <i class="fas fa-chevron-right text-3xl"></i>
+        </button> -->
+    </div>
+
+    <div id="calendar" class="hidden flex-col relative justify-center items-center h-10 py-4">
+        <div
+            class="flex flex-col absolute top-0 justify-center items-center bg-pinkPrimary w-[90%] gap-y-5 py-4 rounded-2xl">
+            <div class="flex flex-row justify-between w-full px-8 py-2">
+                <button id="prevButtonMonth" class="text-white">
+                    <i class="fas fa-chevron-left text-3xl"></i> <!-- Seta para a direita -->
+                </button>
+                <button id="monthPicker">
+                    <p id="monthPickerText" class="font-fraunces font-black text-2xl px-4 text-white"></p>
+                </button>
+                <button id="nextButtonMonth" class="text-white">
+                    <i class="fas fa-chevron-right text-3xl"></i> <!-- Seta para a esquerda -->
+                </button>
+            </div>
+            <div class="grid grid-cols-7 font-fraunces font-3xl font-black text-white w-[90%]">
+                <p class="text-center">D</p>
+                <p class="text-center">S</p>
+                <p class="text-center">T</p>
+                <p class="text-center">Q</p>
+                <p class="text-center">Q</p>
+                <p class="text-center">S</p>
+                <p class="text-center">S</p>
+            </div>
+            <div id="daysGrid"
+                class="grid grid-cols-7 grid-rows-5 font-fraunces bg-gray rounded-lg text-black w-[90%] h-full font-3xl gap-y-5 py-3 font-black">
+                <p class="text-center text-black text-opacity-50">29</p>
+                <p class="text-center text-black text-opacity-50">30</p>
+                <p class="text-center text-black text-opacity-50">31</p>
+                <p class="text-center">1</p>
+                <p class="text-center">2</p>
+                <p class="text-center">3</p>
+                <p class="text-center">4</p>
+                <p class="text-center">5</p>
+                <p class="text-center">6</p>
+                <span class="bg-pinkPrimary mx-2 rounded-md">
+                    <p class="text-center">7</p>
+                </span>
+                <p class="text-center">8</p>
+                <p class="text-center">9</p>
+                <p class="text-center">10</p>
+                <p class="text-center">11</p>
+                <p class="text-center">12</p>
+                <p class="text-center">13</p>
+                <p class="text-center">14</p>
+                <p class="text-center">15</p>
+                <p class="text-center">16</p>
+                <p class="text-center">17</p>
+                <p class="text-center">18</p>
+                <p class="text-center">19</p>
+                <p class="text-center">20</p>
+                <p class="text-center">21</p>
+                <p class="text-center">22</p>
+                <p class="text-center">23</p>
+                <p class="text-center">24</p>
+                <p class="text-center">25</p>
+                <p class="text-center">26</p>
+                <p class="text-center">27</p>
+                <p class="text-center">28</p>
+                <p class="text-center">29</p>
+                <p class="text-center">30</p>
+                <p class="text-center">31</p>
+                <p class="text-center text-black opacity-50">1</p>
+            </div>
+            <div class="flex flex-row justify-between items-center w-[90%] py-2">
+                <button id="cancelButtonDatePicker"
+                    class="bg-gray font-fraunces rounded-lg font-black text-xl px-4 py-2">
+                    cancelar
+                </button>
+                <button id="saveButtonDatePicker" class="bg-lime font-fraunces rounded-lg font-black text-xl px-4 py-2">
+                    salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="newTaskPopUp" class="hidden flex flex-col relative justify-center items-center h-10 py-4">
+        <div
+            class="flex flex-col absolute top-0 justify-center items-center bg-pinkPrimary w-[90%] gap-y-5 py-4 rounded-2xl">
+            <div class="flex flex-row justify-center w-full px-8 py-2">
+                <p class="font-fraunces font-black text-3xl px-4 text-white">nova tarefa...</p>
+            </div>
+            <input type="text" id="name" name="name" placeholder="nome da tarefa..."
+                class="bg-gray w-[90%] placeholder:font-fraunces placeholder:text-2xl px-4 py-2 rounded-md focus:ring-2 focus:ring-lime focus:outline-none focus:border-lime" />
+            
+            <div class="flex flex-row items-center justify-center w-full">
+                <div
+                    class="relative bg-gray w-[90%] font-fraunces text-black px-2 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    <div class="flex flex-row  justify-between items-center">
+                        <!-- Botão do Dropdown -->
+                        <button id="downDateBtn"
+                            class="text-2xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                            9/1
+                        </button>
+                        <button>
+                            <i class="fas fa-chevron-down text-xl"></i> <!-- Seta para a direita -->
+                        </button>
+                    </div>
+
+                    <!-- Menu Dropdown -->
+                    <ul id="dropdownDateMenu"
+                        class="absolute dayPopUp left-0 mt-2 w-48 bg-gray text-black font-fraunces rounded-xl shadow-lg hidden z-50">
+                        <li data-popUpDay="0" class="block px-4 py-2 hover:bg-hoverColor">9/1</li>
+                        <li data-popUpDay="1" class="block px-4 py-2 hover:bg-hoverColor">10/1</li>
+                        <li data-popUpDay="2" class="block px-4 py-2 hover:bg-hoverColor">11/1</li>
+                        <li data-popUpDay="3" class="block px-4 py-2 hover:bg-hoverColor">12/1</li>
+                        <li data-popUpDay="4" class="block px-4 py-2 hover:bg-hoverColor">13/1</li>
+                        <li data-popUpDay="5" class="block px-4 py-2 hover:bg-hoverColor">14/1</li>
+                        <li data-popUpDay="6" class="block px-4 py-2 hover:bg-hoverColor">15/1</li>
+                    </ul>
+                </div>
+
+                <!--<div
+                    class="relative bg-gray w-[35%] font-fraunces text-black px-2 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    <div id="downHourBtn" class="flex flex-row justify-between items-center">
+                        
+                        <button id="dropdownButton"
+                            class="text-2xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                            08:00
+                        </button>
+                        <button id="downDateButton">
+                            <i class="fas fa-chevron-down text-xl"></i>
+                        </button>
+                    </div> 
+
+                    <ul id="dropdownHourMenu"
+                        class="absolute left-0 mt-2 w-48 bg-gray text-black rounded-xl shadow-lg hidden z-50">
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">00:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">01:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">02:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">03:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">04:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">05:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">06:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">07:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">08:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">09:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">10:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">11:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">12:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">13:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">14:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">15:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">16:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">17:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">18:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">19:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">20:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">21:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">22:00</a></li>
+                        <li class="hourPopUp"><a href="#" class="block px-4 py-2 hover:bg-hoverColor">23:00</a></li>
+                    </ul>
+                </div>-->
+            </div> 
+
+            <div class="flex flex-row justify-between items-center w-[90%] h-10 py-8">
+                <button id="cancelTaskBtn" class="bg-gray font-fraunces rounded-lg font-black text-xl px-4 py-2">
+                    cancelar
+                </button>
+                <button id="saveTaskBtn" class="bg-lime font-fraunces rounded-lg font-black text-xl px-4 py-2">
+                    salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CALENDAR AND TASKS -->
+    <div class="flex flex-row h-full w-full">
+        <div class="flex flex-col h-full w-[30%]">
+            <div class="flex flex-col justify-center text-center items-center mt-3">
+                <p data-taskWeekDay="0" id="todayTask" class="inline font-fraunces font-ultraBlack text-3xl text-center bg-pinkPrimary">Seg.</p>
+                <p data-taskDays="0" id="firstDayinTasks" class="font-fraunces text-xl">14/10</p>
+            </div>
+            <div class="flex flex-col justify-center text-center mt-8">
+                <p data-taskWeekDay="1" class="font-fraunces font-ultraBlack text-3xl">Ter.</p>
+                <p data-taskDays="1" class="font-fraunces text-xl">15/10</p>
+            </div>
+            <div class="flex flex-col justify-center text-center mt-8">
+                <p data-taskWeekDay="2" class="font-fraunces font-ultraBlack text-3xl">Qua.</p>
+                <p data-taskDays="2" class="font-fraunces text-xl">16/10</p>
+            </div>
+            <div class="flex flex-col justify-center text-center mt-8">
+                <p data-taskWeekDay="3" class="font-fraunces font-ultraBlack text-3xl">Qui.</p>
+                <p data-taskDays="3" class="font-fraunces text-xl">17/10</p>
+            </div>
+            <div class="flex flex-col justify-center text-center mt-8">
+                <p data-taskWeekDay="4" class="font-fraunces font-ultraBlack text-3xl">Sex.</p>
+                <p data-taskDays="4" class="font-fraunces text-xl">18/10</p>
+            </div>
+            <div class="flex flex-col justify-center text-center mt-8">
+                <p data-taskWeekDay="5" class="font-fraunces font-ultraBlack text-3xl">Sáb.</p>
+                <p data-taskDays="5" class="font-fraunces text-xl">19/10</p>
+            </div>
+            <div class="flex flex-col justify-center text-center mt-8">
+                <p data-taskWeekDay="6" class="font-fraunces font-ultraBlack text-3xl">Dom.</p>
+                <p data-taskDays="6" class="font-fraunces text-xl">20/10</p>
+            </div>
+        </div>
+        <div id="taskItems" class="flex flex-col items-center h-screen w-[70%]">
+            <button class="task-btn mt-3">
+                <div class="w-full h-full">
+                    <div data-tarefa="0" class="flex w-full h-[32px] bg-lime rounded-md font-openSans text-2xl pl-3 font-bold">Tarefa 1
+                    </div>
+                </div>
+            </button>
+            <button class="task-btn mt-8">
+                <div class="w-full h-full">
+                    <div data-tarefa="1" class="flex w-full h-[32px] bg-lime rounded-md font-openSans text-2xl pl-3 font-bold">Tarefa 2
+                    </div>
+                </div>
+            </button>
+            <button class="task-btn mt-8">
+                <div class="w-full h-full">
+                    <div data-tarefa="2" class="flex w-full h-[32px] bg-lime rounded-md font-openSans text-2xl pl-3 font-bold">Tarefa 3
+                    </div>
+                </div>
+            </button>
+            <button class="task-btn mt-8">
+                <div class="w-full h-full">
+                    <div data-tarefa="3" class="flex w-full h-[32px] bg-lime rounded-md font-openSans text-2xl pl-3 font-bold">Tarefa 4
+                    </div>
+                </div>
+            </button>
+            <button class="task-btn mt-8">
+                <div class="w-full h-full">
+                    <div data-tarefa="4" class="flex w-full h-[32px] bg-lime rounded-md font-openSans text-2xl pl-3 font-bold">Tarefa 5
+                    </div>
+                </div>
+            </button>
+            <button class="task-btn mt-8">
+                <div class="w-full h-full">
+                    <div data-tarefa="5" class="flex w-full h-[32px] bg-lime rounded-md font-openSans text-2xl pl-3 font-bold">Tarefa 6
+                    </div>
+                </div>
+            </button>
+            <button class="task-btn mt-8" >
+                <div class="w-full h-full">
+                    <div data-tarefa="6" class="flex w-full h-[32px] bg-lime rounded-md font-openSans text-2xl pl-3 font-bold">Tarefa 7
+                    </div>
+                </div>
+            </button>
+
+        </div>
+    </div>
+
+    <!-- NEW TASK BUTTON -->
+    <div id="task-button" class="fixed bottom-6 right-4">
+        <button
+            class="w-[150px] h-[80px] font-fraunces text-2xl font-black text-white bg-pinkPrimary rounded-lg flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-plus text-3xl px-2"></i>
+            nova
+            tarefa</button>
+    </div>
+    <!-- SCRIPTS -->
+    <script src="./script.js" type="module"></script>
+    <script src="./newTask.js" type="module"></script>
+    </body>
+
+</html>

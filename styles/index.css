@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* .task-btn{
+    display: flex;
+    width: 100%;
+    height: 32px;
+    border-radius: 0.375rem 6px ou rounded-md;
+    font-family: Open Sans, sans-serif;
+    font-size: 1.5rem 24px ou text-2xl;
+    line-height: 2rem 32px ou text-2xl;
+    padding-left: 0.75rem 12px ou pl-3;
+    font-weight: 700; font-bold
+} */
+
+.task-btn {
+    width: 90%;
+    min-height: 64px;
+}

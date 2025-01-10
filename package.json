@@ -1,0 +1,21 @@
+{
+  "name": "presenti",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "build:css": "bun run tailwindcss -i ./styles/index.css -o ./styles/output.css --watch"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^9.2.1",
+    "date-fns": "^4.1.0",
+    "react-calendar": "^5.1.0"
+  }
+}
