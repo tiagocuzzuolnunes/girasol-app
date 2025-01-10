@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Tiago Tiradentes' Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../styles/output.css">
+</head>
+
+<body>
+    <!-- NEW TASK POPUP -->
+    <div id="newTaskPopUp" class="flex flex-col relative justify-center items-center h-10 py-4">
+        <div
+            class="flex flex-col absolute top-0 justify-center items-center bg-pinkPrimary w-[90%] gap-y-5 py-4 rounded-2xl">
+            <div class="flex flex-row justify-center w-full px-8 py-2">
+                <p class="font-fraunces font-black text-3xl px-4 text-white">nova tarefa...</p>
+            </div>
+            <input type="text" id="name" name="name" placeholder="seu nome..."
+                class="bg-gray w-[90%] placeholder:font-fraunces placeholder:text-2xl px-4 py-2 rounded-md focus:ring-2 focus:ring-lime focus:outline-none focus:border-lime" />
+            <input type="text" id="description" name="description" placeholder="descrição..."
+                class="bg-gray w-[90%] pb-12 placeholder:font-fraunces placeholder:text-2xl px-4 py-2 rounded-md focus:ring-2 focus:ring-lime focus:outline-none focus:border-lime" />
+
+            <div class="flex flex-row items-center justify-between w-[90%]">
+                <div
+                    class="relative bg-gray w-[35%] font-fraunces text-black px-2 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    <div class="flex flex-row  justify-between items-center">
+                        <!-- Botão do Dropdown -->
+                        <button id="dropdownButton"
+                            class="text-2xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                            9/1
+                        </button>
+                        <button id="downDateButton">
+                            <i class="fas fa-chevron-down text-xl"></i> <!-- Seta para a direita -->
+                        </button>
+                    </div>
+
+                    <!-- Menu Dropdown -->
+                    <ul id="dropdownDateMenu"
+                        class="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded-xl shadow-lg hidden">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">9/1</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">10/1</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">11/1</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">12/1</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">13/1</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">14/1</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">15/1</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">16/1</a></li>
+                    </ul>
+                </div>
+
+                <div
+                    class="relative bg-gray w-[35%] font-fraunces text-black px-2 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    <div class="flex flex-row  justify-between items-center">
+                        <!-- Botão do Dropdown -->
+                        <button id="dropdownButton"
+                            class="text-2xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                            08:00
+                        </button>
+                        <button id="downHourButton">
+                            <i class="fas fa-chevron-down text-xl"></i> <!-- Seta para a direita -->
+                        </button>
+                    </div>
+
+                    <!-- Menu Dropdown -->
+                    <ul id="dropdownHourMenu"
+                        class="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded-xl shadow-lg hidden">
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">00:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">01:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">02:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">03:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">04:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">05:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">06:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">07:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">08:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">09:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">10:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">11:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">12:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">13:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">14:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">15:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">16:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">17:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">18:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">19:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">20:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">21:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">22:00</a></li>
+                        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">23:00</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="relative bg-gray w-[90%] font-fraunces text-black px-2 py-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                <div class="flex flex-row  justify-between items-center">
+                    <!-- Botão do Dropdown -->
+                    <button id="dropdownButton"
+                        class=" flex flex-row justify-between items-center w-[90%] text-2xl focus:outline-none focus:ring-2 focus:ring-gray-500">
+                        definir cor: <div class="w-16 h-5 bg-lime border-2 border-black"></div>
+                    </button>
+                    <button id="downColorButton">
+                        <i class="fas fa-chevron-down text-xl"></i> <!-- Seta para a direita -->
+                    </button>
+                </div>
+
+                <!-- Menu Dropdown -->
+                <ul id="dropdownColorMenu"
+                    class="absolute left-0 mt-2 w-48 bg-gray-800 text-white rounded-xl shadow-lg hidden">
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">00:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">01:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">02:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">03:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">04:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">05:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">06:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">07:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">08:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">09:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">10:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">11:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">12:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">13:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">14:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">15:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">16:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">17:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">18:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">19:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">20:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">21:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">22:00</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">23:00</a></li>
+                </ul>
+            </div>
+
+            <div class="flex flex-row justify-between items-center w-[90%] h-10 py-8">
+                <button id="cancelTaskBtn" class="bg-gray font-fraunces rounded-lg font-black text-xl px-4 py-2">
+                    cancelar
+                </button>
+                <button id="saveTaskBtn" class="bg-lime font-fraunces rounded-lg font-black text-xl px-4 py-2">
+                    salvar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="./script.js" type="module"></script>
+    <script src="./newTask.js" type="module"></script>
+</body>
